@@ -9,7 +9,7 @@ const app = express(),
 const users = [];
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../my-app/dist')));
+app.use(express.static(path.join(__dirname, '../vuejs/dist')));
 
 app.get('/api/users', (req, res) => {
   console.log('api/users called!!!!!!!')
@@ -25,7 +25,7 @@ app.post('/api/user', (req, res) => {
 });
 
 app.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, '../my-app/build/index.html'));
+  res.sendFile(path.join(__dirname, '../vuejs/build/index.html'));
 });
 
 app.listen(port, () => {
