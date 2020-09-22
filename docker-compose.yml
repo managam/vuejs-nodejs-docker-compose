@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   nodejs-backend:
+    image: gcr.io/line-p2plid/vue-js-onboarding-nodejs
     build:
       context: ./nodejs
     ports:
@@ -10,11 +11,16 @@ services:
        - ./nodejs:/app/nodejs
        - /app/nodejs/node_modules
   vuejs-frontend:
+    image: gcr.io/line-p2plid/vue-js-onboarding-vuejs
     build:
       context: ./vuejs
     ports:
-      - "8080:8080"
+      - "80:8080"
     container_name: vuejs-frontend
     volumes:
        - ./vuejs:/app/vuejs
        - /app/vuejs/node_modules
+    environment:
+      - GET_HOSTS_FROM=dns
+    labels:
+      kompose.service.type: LoadBalancer
