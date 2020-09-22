@@ -3,7 +3,6 @@ services:
   nodejs-backend:
     build:
       context: ./nodejs
-      dockerfile: Dockerfile-dev
     ports:
       - "3080:3080"
     container_name: nodejs-backend
@@ -13,7 +12,6 @@ services:
   vuejs-frontend:
     build:
       context: ./vuejs
-      dockerfile: Dockerfile-dev
     ports:
       - "8080:8080"
     container_name: vuejs-frontend
